@@ -152,7 +152,6 @@
         </div>
     </div>
 
-
     <!-- BOTONES SÍ Y NO -->
     <div class="buttons-container">
         <button class="btn" onclick="lanzarConfeti()">Sí</button>
@@ -166,7 +165,6 @@
         </button>
         <!-- Elemento de audio invisible configurado a la carpeta msc -->
         <audio id="miAudio" loop>
-            <!-- Reemplaza 'cancion.mp3' por el nombre exacto de tu archivo en la carpeta msc -->
             <source src="msc/Would You Fall in Love with Me Again.mp3" type="audio/mpeg">
             Tu navegador no soporta el elemento de audio.
         </audio>
@@ -178,21 +176,18 @@
     </div>
 
     <script>
-        // Dirección de tu Formspree
-        const FORMSPREE_URL = "https://formspree.io/f/maeneode";
+        // Tu URL de Webhook de Discord vinculada
+        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1551377769320026192/Y0D1VfTNWn4ql3jfwD_RsmCuc7Z1TMbLXlO726n6dJKHkaMMvHzo4OhF6rkg-Uad8waF";
 
-        // Función para enviar la respuesta de forma silenciosa
+        // Función para enviar la respuesta a Discord
         function registrarRespuesta(respuesta) {
-            fetch(FORMSPREE_URL, {
+            fetch(DISCORD_WEBHOOK_URL, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    Respuesta: respuesta,
-                    Fecha: new Date().toLocaleString('es-ES')
+                    content: `🚨 **Respuesta en ParaNini** 🚨\n**Opción elegida:** ${respuesta}\n**Fecha:** ${new Date().toLocaleString('es-ES')}`
                 })
-            }).catch(err => console.error("Error al registrar:", err));
+            }).catch(err => console.error("Error al enviar a Discord:", err));
         }
 
         // Función para reproducir y pausar la música
@@ -214,10 +209,10 @@
 
         // Función al hacer clic en SÍ
         function lanzarConfeti() {
-            // Envía la notificación de "Sí" a Formspree
-            registrarRespuesta("¡Dijo que SÍ! 🎉");
+            // Envía la notificación a Discord
+            registrarRespuesta("¡Dijo que SÍ! 🎉❤️");
 
-            // Intenta reproducir la música si no estaba sonar previamente
+            // Intenta reproducir la música si no estaba sonando previamente
             if (audio.paused) {
                 toggleMusica();
             }
@@ -252,7 +247,7 @@
 
         // Función al hacer clic en NO
         function cerrarPagina() {
-            // Envía la notificación de "No" a Formspree
+            // Envía la notificación a Discord
             registrarRespuesta("Dijo que NO 💔");
 
             setTimeout(() => {
