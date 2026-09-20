@@ -18,7 +18,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #e65c5c; /* Mismo fondo rojo suave */
+            background-color: #e65c5c;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             box-sizing: border-box;
             overflow-x: hidden;
@@ -92,7 +92,7 @@
             font-size: 18px;
             font-weight: 600;
             color: #3a2e2b;
-            background-color: #fff3b0; /* Amarillo pastel */
+            background-color: #fff3b0;
             border: none;
             border-radius: 30px;
             cursor: pointer;
@@ -148,15 +148,8 @@
     <div class="poem-container">
         <h1 class="poem-title">Se la Penélope de mi Odiseo</h1>
         <div class="poem-verses">
-            <p>Me permitirias conocerte mejor para que tal vez en algun momento seas mi Penélope?<br> - dice en Odiseo jssjsj 😉</p>
+            <p>Me permitirias ser conocerte mejor para que seas mi Penélope?<br> - dice en Odiseo 😉</p>
         </div>
-    </div>
-
-
-    <!-- BOTONES SÍ Y NO -->
-    <div class="buttons-container">
-        <button class="btn" onclick="lanzarConfeti()">Sí</button>
-        <button class="btn" onclick="cerrarPagina()">No</button>
     </div>
 
     <!-- BOTÓN PARA REPRODUCIR MÚSICA -->
@@ -164,21 +157,27 @@
         <button class="btn-music" onclick="toggleMusica()">
             <span id="music-icon">🎵</span> <span id="music-text">Reproducir Música</span>
         </button>
-        <!-- Elemento de audio invisible configurado a la carpeta msc -->
         <audio id="miAudio" loop>
-            <!-- Reemplaza 'cancion.mp3' por el nombre exacto de tu archivo en la carpeta msc -->
-            <source src="msc/Would You Fall in Love with Me Again.mp3" type="audio/mpeg">
+            <source src="msc/cancion.mp3" type="audio/mpeg">
             Tu navegador no soporta el elemento de audio.
         </audio>
     </div>
 
+    <!-- BOTONES SÍ Y NO -->
+    <div class="buttons-container">
+        <button class="btn" onclick="lanzarConfeti()">Sí</button>
+        <button class="btn" onclick="cerrarPagina()">No</button>
+    </div>
+
     <!-- SECCIÓN PARA TU IMAGEN -->
     <div class="image-container">
-        <img src="img/e57882c3ccb526a56db9222f993333fd.jpg" alt="Imagen del poema">
+        <img src="img/nombre_de_tu_imagen.extension" alt="Imagen del poema">
     </div>
 
     <script>
-        // Función para reproducir y pausar la música
+        // Tu número formateado con el prefijo internacional de España (+34)
+        const MI_NUMERO = "34653897901";
+
         const audio = document.getElementById('miAudio');
         const musicText = document.getElementById('music-text');
         const musicIcon = document.getElementById('music-icon');
@@ -195,24 +194,22 @@
             }
         }
 
-        // Función al hacer clic en SÍ
+        // Al hacer clic en SÍ
         function lanzarConfeti() {
-            // Intenta reproducir la música si no estaba sonar previamente
-            if (audio.paused) {
-                toggleMusica();
-            }
+            if (audio.paused) toggleMusica();
 
             const emojis = ['🎉', '💖', '💕', '✨', '🌸', '❤️', '🌹'];
-            
             const interval = setInterval(() => {
-                for (let i = 0; i < 5; i++) {
-                    crearEmoji(emojis);
-                }
+                for (let i = 0; i < 5; i++) crearEmoji(emojis);
             }, 100);
 
+            const mensaje = encodeURIComponent("¡Dije que SÍ! Acepto ser la Penélope de tu Odiseo ❤️✨");
+
+            // Abre WhatsApp tras 2.5 segundos de confeti
             setTimeout(() => {
                 clearInterval(interval);
-            }, 12000);
+                window.location.href = `https://wa.me/${MI_NUMERO}?text=${mensaje}`;
+            }, 2500);
         }
 
         function crearEmoji(emojis) {
@@ -225,17 +222,13 @@
 
             document.body.appendChild(emoji);
 
-            setTimeout(() => {
-                emoji.remove();
-            }, 4000);
+            setTimeout(() => emoji.remove(), 4000);
         }
 
-        // Función al hacer clic en NO
+        // Al hacer clic en NO
         function cerrarPagina() {
-            window.close();
-            setTimeout(() => {
-                document.body.innerHTML = "<h1 style='color:white; text-align:center; margin-top:40vh; font-family:sans-serif;'>Página cerrada ❤️</h1>";
-            }, 200);
+            const mensaje = encodeURIComponent("Dije que No... 💔");
+            window.location.href = `https://wa.me/${MI_NUMERO}?text=${mensaje}`;
         }
     </script>
 
