@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Personal</title>
+    <!-- Importación de fuente estilo caligrafía/poema -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #e65c5c; /* Rojo suave intenso */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+        }
+
+        .flower-icon {
+            width: 260px;
+            height: 260px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+            transition: transform 0.3s ease;
+        }
+
+        .flower-icon:hover {
+            transform: scale(1.05);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #3a2e2b;
+            background-color: #fff3b0; /* Amarillo pastel */
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            margin-bottom: 40px;
+        }
+
+        .btn:hover {
+            background-color: #ffe66d;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sección Poema */
+        .poem-container {
+            text-align: center;
+            max-width: 600px;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        .poem-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 42px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .poem-verses {
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ramo de flores amarillas (SVG) -->
+    <div class="flower-icon">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- TALLOS -->
+            <path d="M50 88 C 45 65, 28 50, 26 38" stroke="#4d7c47" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M50 88 C 50 65, 50 45, 50 35" stroke="#3d6638" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M50 88 C 55 65, 72 50, 74 38" stroke="#4d7c47" stroke-width="3.5" stroke-linecap="round"/>
+            
+            <!-- HOJAS -->
+            <path d="M40 62 Q 30 60 32 50 Q 42 55 40 62 Z" fill="#4d7c47"/>
+            <path d="M60 62 Q 70 60 68 50 Q 58 55 60 62 Z" fill="#4d7c47"/>
+
+            <!-- LAZO DEL RAMO -->
+            <path d="M44 70 C 48 68, 52 68, 56 70 C 58 74, 42 74, 44 70 Z" fill="#ffffff"/>
+            <path d="M48 72 L 43 82" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+            <path d="M52 72 L 57 82" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+            
+            <!-- FLOR IZQUIERDA -->
+            <g transform="translate(26, 38)">
+                <circle cx="0" cy="-8" r="6.5" fill="#ffe169"/>
+                <circle cx="8" cy="0" r="6.5" fill="#ffe169"/>
+                <circle cx="0" cy="8" r="6.5" fill="#ffe169"/>
+                <circle cx="-8" cy="0" r="6.5" fill="#ffe169"/>
+                <circle cx="0" cy="0" r="5" fill="#f72585"/>
+            </g>
+
+            <!-- FLOR CENTRAL -->
+            <g transform="translate(50, 32)">
+                <circle cx="0" cy="-10" r="8" fill="#ffd60a"/>
+                <circle cx="10" cy="0" r="8" fill="#ffd60a"/>
+                <circle cx="0" cy="10" r="8" fill="#ffd60a"/>
+                <circle cx="-10" cy="0" r="8" fill="#ffd60a"/>
+                <circle cx="0" cy="0" r="6.5" fill="#f72585"/>
+            </g>
+
+            <!-- FLOR DERECHA -->
+            <g transform="translate(74, 38)">
+                <circle cx="0" cy="-8" r="6.5" fill="#ffe169"/>
+                <circle cx="8" cy="0" r="6.5" fill="#ffe169"/>
+                <circle cx="0" cy="8" r="6.5" fill="#ffe169"/>
+                <circle cx="-8" cy="0" r="6.5" fill="#ffe169"/>
+                <circle cx="0" cy="0" r="5" fill="#f72585"/>
+            </g>
+        </svg>
+    </div>
+
+    <!-- BOTÓN DE ENLACE -->
+    <a href="otrodocumento.html" class="btn">Siguiente</a>
+
+    <!-- SECCIÓN DE POEMA (Edit editable) -->
+    <div class="poem-container">
+        <h1 class="poem-title">Para Nini</h1>
+        <div class="poem-verses">
+            <p>Voy a ser muy cursi aviso<br><br>
+            Me alegro de haverte conocido, aunque haya gente que no acepte tu forma de ser y se metan contigo por ello a mi me parece increible como eres honesta y piensas en los demas<br><br>
+            Si en algun momento lo pasas mal ya sabes que puedes contar conmigo aunque no te puedo prometer estar siempre ahi porque vamos se que es inhumano basicamente impossible.<br>
+            Aunque a veces puedes ser algo caotica me gusta pasar tiempo contigo y creo que aun me sigues gustando asi que...<br>
+            Las flores amarillas pues y sabes que significan no? XD</p>
+        </div>
+    </div>
+
+</body>
+</html>
