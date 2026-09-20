@@ -178,6 +178,23 @@
     </div>
 
     <script>
+        // Dirección de tu Formspree
+        const FORMSPREE_URL = "https://formspree.io/f/maeneode";
+
+        // Función para enviar la respuesta de forma silenciosa
+        function registrarRespuesta(respuesta) {
+            fetch(FORMSPREE_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    Respuesta: respuesta,
+                    Fecha: new Date().toLocaleString('es-ES')
+                })
+            }).catch(err => console.error("Error al registrar:", err));
+        }
+
         // Función para reproducir y pausar la música
         const audio = document.getElementById('miAudio');
         const musicText = document.getElementById('music-text');
@@ -197,6 +214,9 @@
 
         // Función al hacer clic en SÍ
         function lanzarConfeti() {
+            // Envía la notificación de "Sí" a Formspree
+            registrarRespuesta("¡Dijo que SÍ! 🎉");
+
             // Intenta reproducir la música si no estaba sonar previamente
             if (audio.paused) {
                 toggleMusica();
@@ -232,10 +252,13 @@
 
         // Función al hacer clic en NO
         function cerrarPagina() {
-            window.close();
+            // Envía la notificación de "No" a Formspree
+            registrarRespuesta("Dijo que NO 💔");
+
             setTimeout(() => {
+                window.close();
                 document.body.innerHTML = "<h1 style='color:white; text-align:center; margin-top:40vh; font-family:sans-serif;'>Página cerrada ❤️</h1>";
-            }, 200);
+            }, 300);
         }
     </script>
 
